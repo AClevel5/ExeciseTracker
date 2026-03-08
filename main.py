@@ -4,6 +4,7 @@ from datetime import datetime
 
 BASE_URL = "https://app.100daysofpython.dev"
 SHEETY_URL = "https://api.sheety.co/14f7d1cbe8332fa058d95bac9f80e54f/workoutTracker/sheet1"
+SHEETY_TOKEN = os.getenv("SHEETY_TOKEN")
 API_KEY = os.environ.get("API_KEY")
 APP_ID = os.environ.get("APP_ID")
 
@@ -33,8 +34,11 @@ sheet_data_to_add = {
     }
 }
 
+sheety_headers = {
+    "Authorization": f"Bearer {SHEETY_TOKEN}",
+}
 
 # sheet_response = requests.get("https://api.sheety.co/14f7d1cbe8332fa058d95bac9f80e54f/workoutTracker/sheet1")
 # print(sheet_response.json())
-sheet_response = requests.post(url=SHEETY_URL, json=sheet_data_to_add)
+sheet_response = requests.post(url=SHEETY_URL, json=sheet_data_to_add, headers=headers)
 print(sheet_response.text)
