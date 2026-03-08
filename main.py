@@ -38,7 +38,6 @@ sheety_headers = {
     "Authorization": f"Bearer {SHEETY_TOKEN}",
 }
 
-# sheet_response = requests.get("https://api.sheety.co/14f7d1cbe8332fa058d95bac9f80e54f/workoutTracker/sheet1")
-# print(sheet_response.json())
+
 sheet_response = requests.post(url=SHEETY_URL, json=sheet_data_to_add, headers=headers)
-print(sheet_response.text)
+
